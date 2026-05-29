@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>フォーカスリーダー</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="app">
+  <div id="header">
+    <button id="btn-back">作品選択</button>
+    <div id="kanji-badge">読</div>
+    <div id="header-info">
+      <div id="header-title">—</div>
+      <div id="header-sub">—</div>
+    </div>
+    <div id="brand">天然色漢字INDEX™</div>
+  </div>
+
+  <div id="progress-wrap"><div id="progress-bar"></div></div>
+  <div id="progress-label">1 / 0</div>
+  <div id="chunk-info"></div>
+
+  <div id="reader-area">
+    <div id="stage">
+      <div id="fade-l"></div>
+      <div id="fade-r"></div>
+      <div id="track"></div>
+    </div>
+    <div id="complete-banner">
+      <div id="complete-kanji">完</div>
+      <div id="complete-msg">読了しました</div>
+      <div id="complete-sub">お疲れさまでした</div>
+      <button id="reset-btn">最初から読む</button>
+      <button id="back-btn">作品選択に戻る</button>
+    </div>
+  </div>
+
+  <div id="hint">← → キーでも操作できます</div>
+
+  <div id="controls">
+    <button class="ctrl-btn" id="btn-next">次 →</button>
+    <div id="speed-wrap">
+      <button class="ctrl-btn primary" id="btn-auto">自動再生</button>
+      <div id="speed-row">
+        <label>速度</label>
+        <input type="range" min="1" max="5" value="3" step="1" id="speed-slider">
+        <label id="speed-val">3</label>
+      </div>
+    </div>
+    <button class="ctrl-btn" id="btn-prev" disabled>← 前</button>
+  </div>
+</div>
+
+<script src="data/kokoro.js"></script>
+<script src="data/botchan.js"></script>
+<script src="data/takekurabe.js"></script>
+<script src="js/reader.js"></script>
+</body>
+</html>
