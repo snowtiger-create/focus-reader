@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>天然色漢字フォーカスリーダー</title>
+  <title>フォーカスリーダー</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -14,32 +14,32 @@
   <header id="top-header">
     <div id="logo-kanji">選</div>
     <div>
-      <div id="logo-title">天然色漢字フォーカスリーダー</div>
-      <div id="logo-sub">天然色漢字INDEX™ — 読書体験</div>
+      <div id="logo-title">フォーカスリーダー</div>
+      <div id="logo-sub">長文を読むのが苦手な方へ</div>
     </div>
   </header>
 
   <!-- モード切替タブ -->
   <div id="mode-tabs">
-    <button class="mode-tab active" data-tab="books">作品から選ぶ</button>
-    <button class="mode-tab" data-tab="custom">テキストを貼り付ける</button>
+    <button class="mode-tab active" data-tab="custom">テキストを貼り付ける</button>
+    <button class="mode-tab" data-tab="books">作品から選ぶ</button>
   </div>
 
   <!-- 作品選択 -->
-  <main id="tab-books">
+  <main id="tab-books" style="display:none">
     <div id="book-grid"></div>
   </main>
 
   <!-- テキスト入力 -->
-  <div id="tab-custom" style="display:none">
+  <div id="tab-custom">
     <p class="section-label">論文・資料・ビジネス文書などを貼り付けてください</p>
     <textarea id="input-text" placeholder="ここにテキストを貼り付けてください。長文の資料、論文、ビジネス文書など何でもOKです。"></textarea>
 
     <p class="section-label">区切り方を選択</p>
     <div class="split-row">
-      <button class="split-btn active" data-mode="kuten">句点（。）ごと</button>
+      <button class="split-btn active" data-mode="both">句点＋読点</button>
+      <button class="split-btn" data-mode="kuten">句点（。）ごと</button>
       <button class="split-btn" data-mode="touten">読点（、）ごと</button>
-      <button class="split-btn" data-mode="both">句点＋読点</button>
       <button class="split-btn" data-mode="line">改行ごと</button>
       <button class="split-btn" data-mode="word">単語ごと</button>
     </div>
@@ -47,9 +47,6 @@
     <button id="start-custom-btn" disabled>読み始める</button>
   </div>
 
-  <footer id="top-footer">
-    青空文庫収録作品（著作権消滅）を使用しています
-  </footer>
 </div>
 
 <script src="data/kokoro.js"></script>

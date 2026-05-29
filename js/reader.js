@@ -37,9 +37,9 @@ function loadContent() {
     const splitMode = localStorage.getItem('splitMode') || 'kuten';
     const modeLabel = { kuten:'句点ごと', touten:'読点ごと', both:'句点＋読点', line:'改行ごと', word:'単語ごと' };
     headerTitle.textContent = 'テキストリーダー';
-    headerSub.textContent = '天然色漢字INDEX™';
+    headerSub.textContent = '長文を読むのが苦手な方へ';
     chunkInfo.textContent = '区切り：' + (modeLabel[splitMode] || splitMode) + ' / ' + chunks.length + 'ブロック';
-    document.title = 'テキストリーダー — 天然色漢字INDEX™';
+    document.title = 'テキストリーダー';
   } else {
     // 作品モード
     isCustomMode = false;
