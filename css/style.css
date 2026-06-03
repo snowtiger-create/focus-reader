@@ -1,4 +1,4 @@
-/* ===== 天然色漢字フォーカスリーダー v3 — 共通スタイル ===== */
+/* ===== 天然色漢字フォーカスリーダー v4 — 共通スタイル ===== */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -56,439 +56,313 @@ body:has(#top-app) {
 }
 
 #logo-kanji {
-  width: 52px;
-  height: 52px;
+  width: 52px; height: 52px;
   border-radius: 14px;
   background: var(--ac-bg);
   border: 2px solid var(--ac);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-  color: var(--ac-text);
-  font-family: 'Noto Serif JP', serif;
-  font-weight: 500;
-  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; color: var(--ac-text);
+  font-family: 'Noto Serif JP', serif; font-weight: 500; flex-shrink: 0;
 }
 
-#logo-title {
-  font-size: 17px;
-  font-weight: 500;
-  color: var(--tx);
-  font-family: 'Noto Sans JP', sans-serif;
-}
+#logo-title { font-size: 17px; font-weight: 500; color: var(--tx); font-family: 'Noto Sans JP', sans-serif; }
+#logo-sub { font-size: 12px; color: var(--ac); font-family: 'Noto Sans JP', sans-serif; margin-top: 2px; }
 
-#logo-sub {
-  font-size: 12px;
-  color: var(--ac);
-  font-family: 'Noto Sans JP', sans-serif;
-  margin-top: 2px;
-}
-
-/* モード切替タブ */
 #mode-tabs {
-  display: flex;
-  gap: 4px;
+  display: flex; gap: 4px;
   margin-bottom: 1.25rem;
   border-bottom: 1px solid var(--bd);
   padding-bottom: 0;
 }
 
 .mode-tab {
-  padding: 8px 18px;
-  font-size: 13px;
+  padding: 8px 18px; font-size: 13px;
   font-family: 'Noto Sans JP', sans-serif;
-  color: #888;
-  background: none;
-  border: none;
+  color: #888; background: none; border: none;
   border-bottom: 2px solid transparent;
-  cursor: pointer;
-  transition: all 0.15s;
-  margin-bottom: -1px;
+  cursor: pointer; transition: all 0.15s; margin-bottom: -1px;
 }
 
 .mode-tab:hover { color: var(--tx); }
+.mode-tab.active { color: var(--ac); border-bottom-color: var(--ac); font-weight: 500; }
 
-.mode-tab.active {
-  color: var(--ac);
-  border-bottom-color: var(--ac);
-  font-weight: 500;
-}
-
-/* 作品グリッド */
 #book-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 14px;
-  margin-bottom: 1.5rem;
+  gap: 14px; margin-bottom: 1.5rem;
 }
 
 .book-card {
-  background: var(--su);
-  border: 1px solid var(--bd);
-  border-radius: 16px;
-  padding: 1.25rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  background: var(--su); border: 1px solid var(--bd);
+  border-radius: 16px; padding: 1.25rem;
+  cursor: pointer; transition: all 0.2s ease;
+  display: flex; flex-direction: column; gap: 10px;
   box-shadow: var(--shadow);
 }
 
-.book-card:hover {
-  border-color: var(--ac);
-  transform: translateY(-2px);
-}
+.book-card:hover { border-color: var(--ac); transform: translateY(-2px); }
 
 .book-kanji {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: var(--ac-bg);
-  border: 1.5px solid var(--ac);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  color: var(--ac-text);
-  font-family: 'Noto Serif JP', serif;
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--ac-bg); border: 1.5px solid var(--ac);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; color: var(--ac-text); font-family: 'Noto Serif JP', serif;
 }
 
-.book-title {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--tx);
-  font-family: 'Noto Sans JP', sans-serif;
-}
+.book-title { font-size: 15px; font-weight: 500; color: var(--tx); font-family: 'Noto Sans JP', sans-serif; }
+.book-author { font-size: 12px; color: var(--ac); font-family: 'Noto Sans JP', sans-serif; }
+.book-desc { font-size: 12px; color: #888; font-family: 'Noto Sans JP', sans-serif; line-height: 1.6; }
+.book-lines { font-size: 11px; color: #aaa; font-family: 'Noto Sans JP', sans-serif; text-align: right; }
 
-.book-author {
-  font-size: 12px;
-  color: var(--ac);
-  font-family: 'Noto Sans JP', sans-serif;
-}
-
-.book-desc {
-  font-size: 12px;
-  color: #888;
-  font-family: 'Noto Sans JP', sans-serif;
-  line-height: 1.6;
-}
-
-.book-lines {
-  font-size: 11px;
-  color: #aaa;
-  font-family: 'Noto Sans JP', sans-serif;
-  text-align: right;
-}
-
-/* テキスト入力エリア */
 #tab-custom { padding-bottom: 1.5rem; }
 
 .section-label {
-  display: block;
-  font-size: 12px;
-  color: #888;
-  font-family: 'Noto Sans JP', sans-serif;
-  margin-bottom: 8px;
+  display: block; font-size: 12px; color: #888;
+  font-family: 'Noto Sans JP', sans-serif; margin-bottom: 8px;
 }
 
 textarea {
-  width: 100%;
-  height: 160px;
-  padding: 12px;
-  border: 1px solid var(--bd);
-  border-radius: 12px;
-  background: var(--su);
-  color: var(--tx);
-  font-size: 14px;
-  font-family: 'Noto Serif JP', serif;
-  line-height: 1.8;
-  resize: vertical;
-  margin-bottom: 16px;
+  width: 100%; height: 160px; padding: 12px;
+  border: 1px solid var(--bd); border-radius: 12px;
+  background: var(--su); color: var(--tx);
+  font-size: 14px; font-family: 'Noto Serif JP', serif;
+  line-height: 1.8; resize: vertical; margin-bottom: 16px;
   transition: border-color 0.15s;
 }
 
 textarea:focus { outline: none; border-color: var(--ac); }
 
-.split-row {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-}
+.split-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
 
 .split-btn {
-  padding: 7px 14px;
-  border-radius: 8px;
-  border: 1px solid var(--bd);
-  background: var(--su);
-  color: var(--tx);
-  font-size: 13px;
-  font-family: 'Noto Sans JP', sans-serif;
-  cursor: pointer;
-  transition: all 0.15s;
+  padding: 7px 14px; border-radius: 8px;
+  border: 1px solid var(--bd); background: var(--su);
+  color: var(--tx); font-size: 13px; font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer; transition: all 0.15s;
 }
 
 .split-btn:hover { background: var(--ac-bg); border-color: var(--ac); color: var(--ac-text); }
-
-.split-btn.active {
-  background: var(--ac-bg);
-  border-color: var(--ac);
-  color: var(--ac-text);
-  font-weight: 500;
-}
+.split-btn.active { background: var(--ac-bg); border-color: var(--ac); color: var(--ac-text); font-weight: 500; }
 
 #start-custom-btn {
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  background: var(--ac);
-  color: #fff;
-  font-size: 15px;
-  font-family: 'Noto Sans JP', sans-serif;
-  cursor: pointer;
-  transition: opacity 0.15s;
+  width: 100%; padding: 12px; border-radius: 10px; border: none;
+  background: var(--ac); color: #fff; font-size: 15px;
+  font-family: 'Noto Sans JP', sans-serif; cursor: pointer; transition: opacity 0.15s;
 }
 
 #start-custom-btn:hover { opacity: 0.88; }
 #start-custom-btn:disabled { opacity: 0.35; cursor: default; }
 
 #top-footer {
-  font-size: 11px;
-  color: #aaa;
+  font-size: 11px; color: #aaa;
   font-family: 'Noto Sans JP', sans-serif;
-  text-align: center;
-  padding-top: 1rem;
+  text-align: center; padding-top: 1rem;
   border-top: 1px solid var(--bd);
 }
 
 /* ===== 読書ページ ===== */
 
 body:has(#app) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; padding: 1.5rem;
 }
 
 #app {
-  width: 100%;
-  max-width: 640px;
-  background: var(--su);
-  border-radius: 20px;
-  border: 1px solid var(--bd);
-  overflow: hidden;
+  width: 100%; max-width: 640px;
+  background: var(--su); border-radius: 20px;
+  border: 1px solid var(--bd); overflow: hidden;
   box-shadow: var(--shadow);
 }
 
 #header {
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid var(--bd);
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  padding: 1rem 1.5rem; border-bottom: 1px solid var(--bd);
+  display: flex; align-items: center; gap: 12px;
 }
 
 #btn-back {
-  font-size: 12px;
-  color: var(--ac);
+  font-size: 12px; color: var(--ac);
   font-family: 'Noto Sans JP', sans-serif;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px 0;
-  white-space: nowrap;
-  flex-shrink: 0;
+  background: none; border: none; cursor: pointer;
+  padding: 4px 0; white-space: nowrap; flex-shrink: 0;
 }
 
 #btn-back:hover { text-decoration: underline; }
 
 #kanji-badge {
-  width: 44px;
-  height: 44px;
-  border-radius: 11px;
-  background: var(--ac-bg);
-  border: 2px solid var(--ac);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  color: var(--ac-text);
-  font-family: 'Noto Serif JP', serif;
-  font-weight: 500;
-  flex-shrink: 0;
-  transition: all 0.4s ease;
+  width: 44px; height: 44px; border-radius: 11px;
+  background: var(--ac-bg); border: 2px solid var(--ac);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; color: var(--ac-text);
+  font-family: 'Noto Serif JP', serif; font-weight: 500;
+  flex-shrink: 0; transition: all 0.4s ease;
 }
 
 #header-info { flex: 1; min-width: 0; }
 
 #header-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--tx);
+  font-size: 14px; font-weight: 500; color: var(--tx);
   font-family: 'Noto Sans JP', sans-serif;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 
-#header-sub {
-  font-size: 11px;
-  color: #888;
-  font-family: 'Noto Sans JP', sans-serif;
-  margin-top: 1px;
-}
+#header-sub { font-size: 11px; color: #888; font-family: 'Noto Sans JP', sans-serif; margin-top: 1px; }
 
 #brand {
-  font-size: 10px;
-  font-family: 'Noto Sans JP', sans-serif;
-  color: var(--ac);
-  letter-spacing: 0.04em;
-  background: var(--ac-bg);
-  padding: 3px 8px;
-  border-radius: 6px;
-  white-space: nowrap;
-  flex-shrink: 0;
+  font-size: 10px; font-family: 'Noto Sans JP', sans-serif;
+  color: var(--ac); letter-spacing: 0.04em;
+  background: var(--ac-bg); padding: 3px 8px;
+  border-radius: 6px; white-space: nowrap; flex-shrink: 0;
 }
 
+/* 縦書き・横書き切替バー */
+#mode-bar {
+  display: flex; align-items: center; justify-content: flex-end;
+  gap: 6px; padding: 8px 16px;
+  border-bottom: 0.5px solid var(--bd);
+}
+
+.mode-btn {
+  padding: 5px 14px; border-radius: 20px;
+  border: 1px solid var(--bd); background: transparent;
+  color: #888; font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer; transition: all 0.15s;
+}
+
+.mode-btn:hover { background: var(--ac-bg); }
+.mode-btn.active { background: var(--ac-bg); border-color: var(--ac); color: var(--ac-text); font-weight: 500; }
+
 #progress-wrap {
-  height: 2px;
-  background: var(--mu);
-  margin: 10px 16px 0;
-  border-radius: 2px;
-  overflow: hidden;
+  height: 2px; background: var(--mu);
+  margin: 10px 16px 0; border-radius: 2px; overflow: hidden;
 }
 
 #progress-bar {
-  height: 100%;
-  background: var(--ac);
-  border-radius: 2px;
-  transition: width 0.35s ease;
-  width: 0%;
+  height: 100%; background: var(--ac);
+  border-radius: 2px; transition: width 0.35s ease; width: 0%;
 }
 
 #progress-label {
-  font-size: 11px;
-  color: #888;
+  font-size: 11px; color: #888;
   font-family: 'Noto Sans JP', sans-serif;
-  text-align: right;
-  padding: 3px 16px 0;
+  text-align: right; padding: 3px 16px 0;
 }
 
 #chunk-info {
-  font-size: 11px;
-  color: var(--ac);
+  font-size: 11px; color: var(--ac);
   font-family: 'Noto Sans JP', sans-serif;
-  text-align: center;
-  padding: 4px 16px 6px;
-  min-height: 24px;
+  text-align: center; padding: 4px 16px 6px; min-height: 24px;
 }
 
 #reader-area { position: relative; }
 
-#stage {
-  height: 300px;
-  overflow: hidden;
-  position: relative;
-  padding: 0 24px;
+/* 縦書きステージ */
+#stage-tate {
+  height: 300px; overflow: hidden;
+  position: relative; padding: 0 24px;
 }
 
-#track {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
+#track-tate {
+  display: flex; flex-direction: row; height: 100%;
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 
-.col {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  height: 100%;
-  padding: 16px 0;
-  flex-shrink: 0;
-  transition: all 0.4s;
-  cursor: pointer;
-  border-radius: 8px;
+.col-tate {
+  display: flex; flex-direction: column; justify-content: flex-start;
+  writing-mode: vertical-rl; text-orientation: mixed;
+  height: 100%; padding: 16px 0; flex-shrink: 0;
+  transition: all 0.4s; cursor: pointer; border-radius: 8px;
 }
 
-.col .ct {
-  font-family: 'Noto Serif JP', serif;
-  letter-spacing: 0.1em;
-  line-height: 2;
-  font-size: 17px;
+.col-tate .ct {
+  font-family: 'Noto Serif JP', serif; letter-spacing: 0.1em;
+  line-height: 2; font-size: 17px;
   transition: opacity 0.4s, color 0.4s;
 }
 
-.col.future .ct  { color: var(--ac); opacity: 0.45; font-weight: 300; }
-.col.active .ct  { color: var(--tx); opacity: 1; font-weight: 400; }
-.col.active      { background: var(--ac-bg); padding: 16px 8px; }
-.col.near .ct    { color: var(--tx); opacity: 0.5; font-weight: 300; }
-.col.far .ct     { color: var(--tx); opacity: 0.15; font-weight: 300; }
+.col-tate.future .ct { color: var(--ac); opacity: 0.45; font-weight: 300; }
+.col-tate.active .ct { color: var(--tx); opacity: 1; font-weight: 400; }
+.col-tate.active { background: var(--ac-bg); padding: 16px 8px; }
+.col-tate.near .ct { opacity: 0.5; font-weight: 300; }
+.col-tate.far .ct { opacity: 0.15; font-weight: 300; }
 
+/* 横書きステージ */
+#stage-yoko {
+  height: 300px; overflow: hidden;
+  position: relative; padding: 0 24px;
+}
+
+#track-yoko {
+  display: flex; flex-direction: column; width: 100%;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.col-yoko {
+  padding: 12px 16px; border-radius: 8px;
+  transition: all 0.4s; cursor: pointer; flex-shrink: 0;
+}
+
+.col-yoko .ct {
+  font-family: 'Noto Serif JP', serif; letter-spacing: 0.04em;
+  line-height: 1.9; font-size: 17px;
+  transition: opacity 0.4s, color 0.4s; display: block;
+}
+
+.col-yoko.future .ct { color: var(--ac); opacity: 0.45; font-weight: 300; }
+.col-yoko.active .ct { color: var(--tx); opacity: 1; font-weight: 400; }
+.col-yoko.active { background: var(--ac-bg); }
+.col-yoko.near .ct { opacity: 0.5; font-weight: 300; }
+.col-yoko.far .ct { opacity: 0.15; font-weight: 300; }
+
+/* フェード */
 #fade-l, #fade-r {
-  position: absolute;
-  top: 0;
-  width: 48px;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
+  position: absolute; top: 0; width: 48px; height: 100%;
+  pointer-events: none; z-index: 2;
 }
 
 #fade-l { left: 0; background: linear-gradient(to right, var(--su), transparent); }
 #fade-r { right: 0; background: linear-gradient(to left, var(--su), transparent); }
 
+#fade-t, #fade-b {
+  position: absolute; left: 0; width: 100%; height: 48px;
+  pointer-events: none; z-index: 2;
+}
+
+#fade-t { top: 0; background: linear-gradient(to bottom, var(--su), transparent); }
+#fade-b { bottom: 0; background: linear-gradient(to top, var(--su), transparent); }
+
+/* リサイザー */
+#stage-resizer {
+  height: 18px; display: flex; align-items: center; justify-content: center;
+  cursor: ns-resize; color: #bbb;
+  border-top: 0.5px solid var(--bd); border-bottom: 0.5px solid var(--bd);
+  font-size: 14px; user-select: none; transition: background 0.15s;
+}
+
+#stage-resizer:hover { background: var(--ac-bg); color: var(--ac); }
+
+/* 読了バナー */
 #complete-banner {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 2.5rem 2rem;
-  text-align: center;
-  height: 300px;
+  display: none; flex-direction: column; align-items: center;
+  justify-content: center; gap: 12px; padding: 2.5rem 2rem;
+  text-align: center; height: 300px;
 }
 
 #complete-kanji {
-  width: 68px;
-  height: 68px;
-  border-radius: 16px;
-  background: var(--ac-bg);
-  border: 2px solid var(--ac);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 34px;
-  color: var(--ac-text);
-  font-family: 'Noto Serif JP', serif;
+  width: 68px; height: 68px; border-radius: 16px;
+  background: var(--ac-bg); border: 2px solid var(--ac);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 34px; color: var(--ac-text); font-family: 'Noto Serif JP', serif;
 }
 
-#complete-msg {
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--tx);
-  font-family: 'Noto Sans JP', sans-serif;
-}
-
-#complete-sub {
-  font-size: 13px;
-  color: #888;
-  font-family: 'Noto Sans JP', sans-serif;
-}
+#complete-msg { font-size: 18px; font-weight: 500; color: var(--tx); font-family: 'Noto Sans JP', sans-serif; }
+#complete-sub { font-size: 13px; color: #888; font-family: 'Noto Sans JP', sans-serif; }
 
 #reset-btn, #back-btn {
-  padding: 10px 24px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-family: 'Noto Sans JP', sans-serif;
-  cursor: pointer;
-  transition: background 0.15s;
+  padding: 10px 24px; border-radius: 10px; font-size: 14px;
+  font-family: 'Noto Sans JP', sans-serif; cursor: pointer; transition: background 0.15s;
 }
 
 #reset-btn { border: 1px solid var(--ac); background: transparent; color: var(--ac); }
@@ -497,35 +371,23 @@ body:has(#app) {
 #back-btn:hover { background: var(--ac-bg); color: var(--ac); }
 
 #hint {
-  font-size: 11px;
-  color: #bbb;
+  font-size: 11px; color: #bbb;
   font-family: 'Noto Sans JP', sans-serif;
-  text-align: center;
-  padding: 0 16px 6px;
+  text-align: center; padding: 0 16px 6px;
 }
 
 #controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 16px 14px;
-  border-top: 1px solid var(--bd);
-  gap: 10px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px 14px; border-top: 1px solid var(--bd); gap: 10px;
 }
 
 .ctrl-btn {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 8px 14px;
-  border-radius: 9px;
-  border: 0.5px solid var(--bd);
-  background: transparent;
-  color: var(--tx);
-  font-size: 13px;
+  display: flex; align-items: center; gap: 5px;
+  padding: 8px 14px; border-radius: 9px;
+  border: 0.5px solid var(--bd); background: transparent;
+  color: var(--tx); font-size: 13px;
   font-family: 'Noto Sans JP', sans-serif;
-  cursor: pointer;
-  transition: background 0.15s;
+  cursor: pointer; transition: background 0.15s;
 }
 
 .ctrl-btn:hover { background: var(--ac-bg); }
@@ -539,22 +401,14 @@ body:has(#app) {
 #speed-row label { font-size: 11px; color: #888; font-family: 'Noto Sans JP', sans-serif; }
 
 input[type=range] {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 72px;
-  height: 4px;
-  border-radius: 2px;
-  background: var(--mu);
-  outline: none;
+  -webkit-appearance: none; appearance: none;
+  width: 72px; height: 4px; border-radius: 2px;
+  background: var(--mu); outline: none;
 }
 
 input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: var(--ac);
-  cursor: pointer;
+  -webkit-appearance: none; width: 15px; height: 15px;
+  border-radius: 50%; background: var(--ac); cursor: pointer;
 }
 
 /* ===== レスポンシブ ===== */

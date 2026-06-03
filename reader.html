@@ -18,6 +18,13 @@
       <div id="header-title">—</div>
       <div id="header-sub">—</div>
     </div>
+    <div id="brand">天然色漢字INDEX™</div>
+  </div>
+
+  <!-- 縦書き・横書き切替 -->
+  <div id="mode-bar">
+    <button class="mode-btn active" id="btn-tate" onclick="setMode('tate')">縦書き</button>
+    <button class="mode-btn" id="btn-yoko" onclick="setMode('yoko')">横書き</button>
   </div>
 
   <div id="progress-wrap"><div id="progress-bar"></div></div>
@@ -25,11 +32,21 @@
   <div id="chunk-info"></div>
 
   <div id="reader-area">
-    <div id="stage">
+    <!-- 縦書きステージ -->
+    <div id="stage-tate">
       <div id="fade-l"></div>
       <div id="fade-r"></div>
-      <div id="track"></div>
+      <div id="track-tate"></div>
     </div>
+    <!-- 横書きステージ -->
+    <div id="stage-yoko" style="display:none">
+      <div id="fade-t"></div>
+      <div id="fade-b"></div>
+      <div id="track-yoko"></div>
+    </div>
+    <!-- リサイザー -->
+    <div id="stage-resizer">⠿</div>
+    <!-- 読了バナー -->
     <div id="complete-banner">
       <div id="complete-kanji">完</div>
       <div id="complete-msg">読了しました</div>
@@ -42,7 +59,7 @@
   <div id="hint">← → キーでも操作できます</div>
 
   <div id="controls">
-    <button class="ctrl-btn" id="btn-next">← 次</button>
+    <button class="ctrl-btn" id="btn-next">次 →</button>
     <div id="speed-wrap">
       <button class="ctrl-btn primary" id="btn-auto">自動再生</button>
       <div id="speed-row">
@@ -51,7 +68,7 @@
         <label id="speed-val">3</label>
       </div>
     </div>
-    <button class="ctrl-btn" id="btn-prev" disabled>前 →</button>
+    <button class="ctrl-btn" id="btn-prev" disabled>← 前</button>
   </div>
 </div>
 

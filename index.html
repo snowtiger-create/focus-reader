@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>フォーカスリーダー</title>
+  <title>天然色漢字フォーカスリーダー</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -14,46 +14,43 @@
   <header id="top-header">
     <div id="logo-kanji">選</div>
     <div>
-      <div id="logo-title">フォーカスリーダー</div>
-      <div id="logo-sub">長文を読むのが苦手な方へ</div>
+      <div id="logo-title">天然色漢字フォーカスリーダー</div>
+      <div id="logo-sub">天然色漢字INDEX™ — 読書体験</div>
     </div>
   </header>
 
-  <!-- モード切替タブ -->
   <div id="mode-tabs">
-    <button class="mode-tab active" data-tab="custom">テキストを貼り付ける</button>
     <button class="mode-tab" data-tab="books">作品から選ぶ</button>
+    <button class="mode-tab active" data-tab="custom">テキストを貼り付ける</button>
   </div>
 
-  <!-- 作品選択 -->
   <main id="tab-books" style="display:none">
     <div id="book-grid"></div>
   </main>
 
-  <!-- テキスト入力 -->
   <div id="tab-custom">
     <p class="section-label">論文・資料・ビジネス文書などを貼り付けてください</p>
     <textarea id="input-text" placeholder="ここにテキストを貼り付けてください。長文の資料、論文、ビジネス文書など何でもOKです。"></textarea>
-
     <p class="section-label">区切り方を選択</p>
     <div class="split-row">
-      <button class="split-btn active" data-mode="both">句点＋読点</button>
-      <button class="split-btn" data-mode="kuten">句点（。）ごと</button>
+      <button class="split-btn active" data-mode="kuten">句点（。）ごと</button>
       <button class="split-btn" data-mode="touten">読点（、）ごと</button>
+      <button class="split-btn" data-mode="both">句点＋読点</button>
       <button class="split-btn" data-mode="line">改行ごと</button>
       <button class="split-btn" data-mode="word">単語ごと</button>
     </div>
-
     <button id="start-custom-btn" disabled>読み始める</button>
   </div>
 
+  <footer id="top-footer">
+    青空文庫収録作品（著作権消滅）を使用しています
+  </footer>
 </div>
 
 <script src="data/kokoro.js"></script>
 <script src="data/botchan.js"></script>
 <script src="data/takekurabe.js"></script>
 <script>
-  // --- タブ切替 ---
   const tabs = document.querySelectorAll('.mode-tab');
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -64,7 +61,6 @@
     });
   });
 
-  // --- 作品カード生成 ---
   const books = [KOKORO, BOTCHAN, TAKEKURABE];
   const grid = document.getElementById('book-grid');
   books.forEach(book => {
@@ -87,7 +83,6 @@
     grid.appendChild(card);
   });
 
-  // --- 区切りモード選択 ---
   let splitMode = 'kuten';
   document.querySelectorAll('.split-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -97,28 +92,22 @@
     });
   });
 
-  // --- テキスト入力 ---
   const inputText = document.getElementById('input-text');
   const startBtn = document.getElementById('start-custom-btn');
-
-  inputText.addEventListener('input', () => {
-    startBtn.disabled = inputText.value.trim().length < 5;
-  });
+  inputText.addEventListener('input', () => { startBtn.disabled = inputText.value.trim().length < 5; });
 
   function splitText(text, m) {
-    let parts = [];
-    if (m === 'kuten')  parts = text.split(/(?<=。)/).map(s => s.trim()).filter(Boolean);
-    else if (m === 'touten') parts = text.split(/(?<=、)/).map(s => s.trim()).filter(Boolean);
-    else if (m === 'both')   parts = text.split(/(?<=[。、])/).map(s => s.trim()).filter(Boolean);
-    else if (m === 'line')   parts = text.split(/\n+/).map(s => s.trim()).filter(Boolean);
-    else if (m === 'word')   parts = text.match(/[\u4e00-\u9fff\u3040-\u30ff\uff00-\uffef]{1,8}|[a-zA-Z0-9]+|[^\s]/g) || [];
-    return parts.filter(p => p.length > 0);
+    if (m === 'kuten')  return text.split(/(?<=。)/).map(s => s.trim()).filter(Boolean);
+    if (m === 'touten') return text.split(/(?<=、)/).map(s => s.trim()).filter(Boolean);
+    if (m === 'both')   return text.split(/(?<=[。、])/).map(s => s.trim()).filter(Boolean);
+    if (m === 'line')   return text.split(/\n+/).map(s => s.trim()).filter(Boolean);
+    if (m === 'word')   return text.match(/[\u4e00-\u9fff\u3040-\u30ff]{1,8}|[a-zA-Z0-9]+|[^\s]/g) || [];
+    return [];
   }
 
   startBtn.addEventListener('click', () => {
-    const text = inputText.value.trim();
-    const chunks = splitText(text, splitMode);
-    if (chunks.length === 0) return;
+    const chunks = splitText(inputText.value.trim(), splitMode);
+    if (!chunks.length) return;
     localStorage.setItem('customChunks', JSON.stringify(chunks));
     localStorage.setItem('splitMode', splitMode);
     localStorage.removeItem('selectedBook');
